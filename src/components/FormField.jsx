@@ -1,4 +1,5 @@
 import React from "react";
+import MultiSelect from "./MultiSelect";
 
 const FormField = ({ form, name, label, type = "text", labelClass, inputClass, gridClass, field = "input", options }) => {
   const {
@@ -27,9 +28,11 @@ const FormField = ({ form, name, label, type = "text", labelClass, inputClass, g
         </span>
       </div>
 
-      {field === "input" ? (
+      {field === "input" && (
         <input id={name} type={type} placeholder={label} className={inputClass} {...register(name, rules)} />
-      ) : (
+      )}
+
+      {field === "select" && (
         <select id={name} className={inputClass} {...register(name, rules)}>
           <option value="">{label}</option>
           {options?.map((option) => (
@@ -40,9 +43,22 @@ const FormField = ({ form, name, label, type = "text", labelClass, inputClass, g
         </select>
       )}
 
+      {field === "multiselect" && (
+        <MultiSelect
+          form={form}
+          name={name}
+          label={label}
+          options={options}
+          inputClass={inputClass}
+          rules={{ validate: (v) => (v && v.length > 0) || "Select at least one option" }}
+        />
+      )}
+
       {errors[name] && <p className="mt-1 text-xs text-red-400">{errors[name].message}</p>}
     </div>
   );
 };
 
 export default FormField;
+
+

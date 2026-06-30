@@ -6,11 +6,14 @@ const CompanyDetails = ({ form, heading, formGrid, grid, label, input ,options, 
     { name: "companyname", label: "Company Name", field: "input" },
     { name: "trade", label: "Trade / Brand Name", field: "input" },
     { name: "registernumber", label: "Registration Number", type: "number", field: "input" },
-    { name: "companytype", label: "Company Type", field: "select" ,options: [
-      { value: "Private Limited", label: "Private Limited" },
-      { value: "Public Limited", label: "Public Limited" },
+    { name: "companytype", label: "Company Type", field: "multiselect" ,options: [
+      { value: "Private ", label: "Private Limited" },
+      { value: "Public ", label: "Public Limited" },
+      { value: "Partnership", label: "Partnership" },
+      { value: "Sole Proprietorship", label: "Sole Proprietorship" },
+      { value: "Limited Liability Partnership (LLP)", label: "Limited Liability Partnership (LLP)" },
     ]},
-    { name: "industry", label: "Industry / Sector", field: "select" ,options: [
+    { name: "industry", label: "Industry / Sector", field: "select", options: [
       { value: "Technology", label: "Technology" },
       { value: "Healthcare", label: "Healthcare" },
       { value: "Finance", label: "Finance" },
